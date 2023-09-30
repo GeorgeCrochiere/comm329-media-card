@@ -1,1 +1,103 @@
-:root {}
+:root {
+    /*  Color Variables  */
+    --light-green: #00B78B;
+    --background: #BCBFBF;
+    --base-gray: #525252;
+    --icon-white: #D9D9D9;
+    --subtitle-gray: #D4D4D4;
+    --title-white: #FFFFFF;
+    --icon-black: #000000;
+    --icon-back-transparent: rgba(82, 82, 82, 0.9);
+    /*  Padding  */
+    --tag-padding: 0.5rem 1rem 0.5rem 1rem;
+    --title-radius: 0px 3rem 0px 0px;
+    /*  Borders  */
+    --default-border: 0.25rem solid var(--icon-white);
+    /*  Animation Variables - See what is common across the board and apply them here  */
+}
+
+body {
+    background-color: var(--background);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+article.media {
+    background-color: var(--base-gray);
+    display: grid;
+    grid-template:
+        "image side" 27rem
+        "foot foot" 12rem
+        / 48rem 12rem;
+    width: 60rem;
+}
+
+header.media-image {
+    grid-area: image;
+    position: relative;
+    background-color: var(--title-white);
+}
+
+header.media-image>h1 {
+    position: absolute;
+    z-index: 5;
+    background-color: var(--icon-back-transparent);
+    padding: 1rem;
+    margin: 0px;
+    border-radius: var(--title-radius);
+    bottom: 0%;
+    color: var(--title-white);
+}
+
+section.media-src {
+    grid-area: side;
+    background-color: var(--light-green);
+    display: flex;
+    flex-direction: column;
+}
+
+footer.media-desc {
+    grid-area: foot;
+}
+
+footer.media-desc>hr {
+    color: var(--light-green);
+    margin: 0px;
+    margin-bottom: 1rem;
+}
+
+div.icon-footer {
+    display: flex;
+    flex-direction: row;
+}
+
+i {
+    user-select: none;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0px;
+}
+
+ul.code-icons>li {}
+
+ul.noncode-icons>li {
+    display: inline;
+    color: var(--light-green);
+    padding: var(--tag-padding);
+}
+
+ul.code-langs>li {
+    display: inline;
+    border: var(--default-border);
+    padding: var(--tag-padding);
+    border-radius: 1rem;
+    color: var(--icon-white);
+}
+
+span.date {
+    color: var(--light-green);
+}
