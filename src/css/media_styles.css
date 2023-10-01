@@ -9,7 +9,8 @@
     --icon-black: #000000;
     --icon-back-transparent: rgba(82, 82, 82, 0.9);
     /*  Padding  */
-    --tag-padding: 0.5rem 1rem 0.5rem 1rem;
+    --tag-padding: 0.5rem 1rem;
+    --base-padding: 0.25rem 2rem;
     --title-radius: 0px 3rem 0px 0px;
     /*  Borders  */
     --default-border: 0.25rem solid var(--icon-white);
@@ -80,13 +81,23 @@ footer.media-desc>p {
     margin-right: 1rem;
 }
 
-div.icon-footer {
+footer.media-desc>div.icon-footer {
     display: flex;
     flex-direction: row;
+    padding: var(--base-padding);
+    margin-bottom: 0px;
+    justify-content: space-between;
 }
 
 i {
     user-select: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    padding: 1rem;
+    border: 1px solid red;
 }
 
 ul {
