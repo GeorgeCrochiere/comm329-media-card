@@ -29,7 +29,7 @@ article.media {
     display: grid;
     grid-template:
         "image side" 27rem
-        "foot foot" 12rem
+        "foot foot" max-content
         / 48rem 12rem;
     width: 60rem;
 }
@@ -38,6 +38,12 @@ header.media-image {
     grid-area: image;
     position: relative;
     background-color: var(--title-white);
+    overflow: hidden;
+}
+
+header.media-image>img {
+    min-width: 100%;
+    min-height: 100%;
 }
 
 header.media-image>h1 {
@@ -66,6 +72,12 @@ footer.media-desc>hr {
     color: var(--light-green);
     margin: 0px;
     margin-bottom: 1rem;
+}
+
+footer.media-desc>p {
+    color: var(--subtitle-gray);
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 div.icon-footer {
