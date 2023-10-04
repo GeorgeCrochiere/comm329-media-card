@@ -8,6 +8,7 @@
     --title-white: #FFFFFF;
     --icon-black: #000000;
     --icon-back-transparent: rgba(82, 82, 82, 0.9);
+    --link-hover: #00ffc3;
     /*  Padding  */
     --tag-padding: 0.5rem 1rem;
     --base-padding: 0.25rem 2rem;
@@ -15,6 +16,8 @@
     /*  Borders  */
     --default-border: 0.25rem solid var(--icon-white);
     /*  Animation Variables - See what is common across the board and apply them here  */
+    --hover-all: all .5s ease-in-out;
+    --hover-link-anim: all 0.3s ease-in-out;
 }
 
 body {
@@ -27,12 +30,18 @@ body {
 
 article.media {
     background-color: var(--base-gray);
+    overflow: hidden;
     display: grid;
     grid-template:
         "image side" 27rem
         "foot foot" max-content
         / 48rem 12rem;
     width: 60rem;
+    box-sizing: content-box;
+    border-radius: 1rem;
+    border: var(--default-border);
+    box-shadow: 10px 10px 10px 10px var(--icon-back-transparent);
+    transition: var(--hover-all);
 }
 
 header.media-image {
@@ -40,6 +49,7 @@ header.media-image {
     position: relative;
     background-color: var(--title-white);
     overflow: hidden;
+    border-top-left-radius: 1rem;
 }
 
 header.media-image>img {
@@ -61,8 +71,15 @@ header.media-image>h1 {
 section.media-src {
     grid-area: side;
     background-color: var(--light-green);
+    border-top-right-radius: 1rem;
+}
+
+section.media-src>ul {
+    height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
 footer.media-desc {
@@ -89,6 +106,12 @@ footer.media-desc>div.icon-footer {
     justify-content: space-between;
 }
 
+footer.media-desc>div.icon-footer>div.end-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
 i {
     user-select: none;
 }
@@ -96,16 +119,13 @@ i {
 a {
     text-decoration: none;
     color: inherit;
-    padding: 1rem;
-    border: 1px solid red;
+    transition: var(--hover-link-anim);
 }
 
 ul {
     list-style-type: none;
     padding: 0px;
 }
-
-ul.code-icons>li {}
 
 ul.noncode-icons>li {
     display: inline;
@@ -123,4 +143,18 @@ ul.code-langs>li {
 
 span.date {
     color: var(--light-green);
+    height: fit-content;
+    padding-left: 2rem;
+}
+
+a:hover {
+    color: var(--link-hover);
+}
+
+article.media:hover {
+    box-shadow: 20px 20px 5px 5px var(--icon-back-transparent);
+}
+
+section.media-src>ul li:not(:last-child) {
+    color: red;
 }
