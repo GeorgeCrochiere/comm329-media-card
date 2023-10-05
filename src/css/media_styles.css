@@ -13,13 +13,16 @@
     --tag-padding: 0.5rem 1rem;
     --base-padding: 0.25rem 2rem;
     --title-radius: 0px 3rem 0px 0px;
-    /*  Borders  */
+    /*  Borders and Sizing */
     --default-border: 0.25rem solid var(--icon-white);
+    --base-width: 60rem;
+    --base-height: calc(var(--base-width) / 16 * 9);
     /*  Animation Variables - See what is common across the board and apply them here  */
     --hover-all: all .5s ease-in-out;
     --hover-link-anim: all 0.3s ease-in-out;
 }
 
+/*  General Background  */
 body {
     background-color: var(--background);
     height: 100vh;
@@ -29,35 +32,26 @@ body {
 }
 
 article.media {
-    background-color: var(--base-gray);
     overflow: hidden;
-    display: grid;
-    grid-template:
-        "image side" 27rem
-        "foot foot" max-content
-        / 48rem 12rem;
-    width: 60rem;
+    height: var(--base-height);
+    width: var(--base-width);
     box-sizing: content-box;
-    border-radius: 1rem;
-    border: var(--default-border);
-    box-shadow: 10px 10px 10px 10px var(--icon-back-transparent);
     transition: var(--hover-all);
 }
 
-header.media-image {
-    grid-area: image;
+/*  Front  */
+section.media-image {
     position: relative;
     background-color: var(--title-white);
-    overflow: hidden;
-    border-top-left-radius: 1rem;
+    border-radius: 1rem;
 }
 
-header.media-image>img {
+section.media-image>img {
     min-width: 100%;
     min-height: 100%;
 }
 
-header.media-image>h1 {
+section.media-image>h1 {
     position: absolute;
     z-index: 5;
     background-color: var(--icon-back-transparent);
@@ -68,10 +62,9 @@ header.media-image>h1 {
     color: var(--title-white);
 }
 
+/*  Back - Side  */
 section.media-src {
-    grid-area: side;
     background-color: var(--light-green);
-    border-top-right-radius: 1rem;
 }
 
 section.media-src>ul {
@@ -82,23 +75,24 @@ section.media-src>ul {
     justify-content: space-around;
 }
 
-footer.media-desc {
-    grid-area: foot;
+/*  Back - Main  */
+section.media-desc {
+    background-color: var(--base-gray);
 }
 
-footer.media-desc>hr {
+section.media-desc>hr {
     color: var(--light-green);
     margin: 0px;
     margin-bottom: 1rem;
 }
 
-footer.media-desc>p {
+section.media-desc>p {
     color: var(--subtitle-gray);
     margin-left: 1rem;
     margin-right: 1rem;
 }
 
-footer.media-desc>div.icon-footer {
+section.media-desc>div.icon-section {
     display: flex;
     flex-direction: row;
     padding: var(--base-padding);
@@ -106,7 +100,7 @@ footer.media-desc>div.icon-footer {
     justify-content: space-between;
 }
 
-footer.media-desc>div.icon-footer>div.end-footer {
+section.media-desc>div.icon-section>div.end-section {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -125,12 +119,12 @@ a {
 ul {
     list-style-type: none;
     padding: 0px;
+    margin: 0px;
 }
 
 ul.noncode-icons>li {
     display: inline;
     color: var(--light-green);
-    padding: var(--tag-padding);
 }
 
 ul.code-langs>li {
@@ -151,10 +145,44 @@ a:hover {
     color: var(--link-hover);
 }
 
-article.media:hover {
-    box-shadow: 20px 20px 5px 5px var(--icon-back-transparent);
-}
-
 section.media-src>ul li:not(:last-child) {
     color: red;
+}
+
+/*  Flip Card Effect Styling  */
+article.media {
+    perspective: calc(var(--base-width) * 10);
+}
+
+div.media-data {
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+div.media-front,
+div.media-back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+}
+
+div.media-back {
+    transform: rotateY(180deg);
+    display: grid;
+    grid-template:
+        "main side" var(--base-height) / calc(var(--base-width) * 3 / 4) calc(var(--base-width) / 4);
+}
+
+section.media-desc {
+    grid-area: main;
+}
+
+section.media-src {
+    grid-area: side;
+}
+
+article.media:hover div.media-data {
+    transform: rotateY(180deg);
+    transition: transform 0.5s;
 }
