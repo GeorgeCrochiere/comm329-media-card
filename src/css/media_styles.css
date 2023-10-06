@@ -166,6 +166,11 @@ section.media-src>ul li:not(:last-child)>a>i:hover {
     color: var(--link-hover);
     border-color: var(--link-hover);
     background-color: var(--base-gray);
+    font-weight: bolder;
+}
+
+section.media-src>ul li:last-child {
+    color: var(--icon-white);
 }
 
 section.media-src>ul li:not(:last-child)>a>i {
