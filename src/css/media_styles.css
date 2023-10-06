@@ -115,6 +115,10 @@ section.media-desc>div.icon-footer>div.end-footer {
     padding-right: 1rem;
 }
 
+h1 {
+    font-family: 'Orbitron', sans-serif;
+}
+
 i {
     user-select: none;
 }
@@ -158,18 +162,30 @@ a:hover {
     color: var(--link-hover);
 }
 
-section.media-src>ul li:not(:last-child)>a:hover {
+section.media-src>ul li:not(:last-child)>a>i:hover {
     color: var(--link-hover);
     border-color: var(--link-hover);
     background-color: var(--base-gray);
 }
 
-section.media-src>ul li:not(:last-child)>a {
+section.media-src>ul li:not(:last-child)>a>i {
     color: var(--icon-white);
     padding: 2.5rem 2rem 2rem 2rem;
     border-radius: 1rem;
     border: var(--icon-border);
 }
+
+/*  Icon Sizes and changes  */
+a>i.material-symbols-outlined.github {
+    font-size: 2.4rem;
+    transition: all 0.5s ease-in-out;
+}
+
+a:hover i.material-symbols-outlined.github {
+    font-size: 4rem;
+}
+
+a:hover
 
 /*  Flip Card Effect Styling  */
 article.media {
