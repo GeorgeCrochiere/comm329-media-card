@@ -14,7 +14,8 @@
     --base-padding: 0.25rem 2rem;
     --title-radius: 0px 3rem 0px 0px;
     /*  Borders and Sizing */
-    --default-border: 0.25rem solid var(--icon-white);
+    --icon-border: 0.25rem solid var(--icon-white);
+    --default-border: 0.5rem solid var(--light-green);
     --base-width: 60rem;
     --base-height: calc(var(--base-width) / 16 * 9);
     /*  Animation Variables - See what is common across the board and apply them here  */
@@ -32,37 +33,39 @@ body {
 }
 
 article.media {
-    overflow: hidden;
+    transition: var(--hover-all);
     height: var(--base-height);
     width: var(--base-width);
-    box-sizing: content-box;
-    transition: var(--hover-all);
+    transition: transform 0.45s ease-in-out;
+    overflow: hidden;
 }
 
 /*  Front  */
 section.media-image {
     position: relative;
     background-color: var(--title-white);
-    border-radius: 1rem;
 }
 
 section.media-image>img {
     min-width: 100%;
     min-height: 100%;
+    overflow: hidden;
 }
 
 section.media-image>h1 {
     position: absolute;
     z-index: 5;
     background-color: var(--icon-back-transparent);
-    padding: 1rem;
+    padding: 1.5rem;
+    padding-bottom: 2rem;
     margin: 0px;
     border-radius: var(--title-radius);
     bottom: 0%;
     color: var(--title-white);
+    transition: all 0.45s ease-in-out;
 }
 
-/*  Back - Side  */
+/*  Back  */
 section.media-src {
     background-color: var(--light-green);
 }
@@ -75,7 +78,6 @@ section.media-src>ul {
     justify-content: space-around;
 }
 
-/*  Back - Main  */
 section.media-desc {
     background-color: var(--base-gray);
 }
@@ -129,7 +131,7 @@ ul.noncode-icons>li {
 
 ul.code-langs>li {
     display: inline;
-    border: var(--default-border);
+    border: var(--icon-border);
     padding: var(--tag-padding);
     border-radius: 1rem;
     color: var(--icon-white);
@@ -162,9 +164,11 @@ div.media-data {
 div.media-front,
 div.media-back {
     position: absolute;
-    height: 100%;
-    width: 100%;
+    height: var(--base-height);
+    width: var(--base-width);
     backface-visibility: hidden;
+    overflow: hidden;
+    border: var(--default-border);
 }
 
 div.media-back {
@@ -184,5 +188,10 @@ section.media-src {
 
 article.media:hover div.media-data {
     transform: rotateY(180deg);
-    transition: transform 0.5s;
+}
+
+article.media:hover h1 {
+    height: 0px;
+    padding: 0px;
+    margin: 0px;
 }
