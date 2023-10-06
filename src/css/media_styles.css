@@ -15,7 +15,7 @@
     --title-radius: 0px 3rem 0px 0px;
     /*  Borders and Sizing */
     --icon-border: 0.25rem solid var(--icon-white);
-    --default-border: 0.5rem solid var(--light-green);
+    --default-border: 0.5rem solid var(--link-hover);
     --base-width: 60rem;
     --base-height: calc(var(--base-width) / 16 * 9);
     /*  Animation Variables - See what is common across the board and apply them here  */
@@ -80,32 +80,39 @@ section.media-src>ul {
 
 section.media-desc {
     background-color: var(--base-gray);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-section.media-desc>hr {
+section.media-desc>div>h1 {
+    color: var(--title-white);
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+section.media-desc>div>hr {
     color: var(--light-green);
     margin: 0px;
-    margin-bottom: 1rem;
+    height: fit-content;
 }
 
-section.media-desc>p {
+section.media-desc>div>p {
     color: var(--subtitle-gray);
     margin-left: 1rem;
     margin-right: 1rem;
 }
 
-section.media-desc>div.icon-section {
+section.media-desc>div.icon-footer {
     display: flex;
-    flex-direction: row;
-    padding: var(--base-padding);
-    margin-bottom: 0px;
     justify-content: space-between;
+    padding-bottom: 1.5rem;
 }
 
-section.media-desc>div.icon-section>div.end-section {
+section.media-desc>div.icon-footer>div.end-footer {
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    justify-content: space-between;
+    padding-right: 1rem;
 }
 
 i {
@@ -129,6 +136,10 @@ ul.noncode-icons>li {
     color: var(--light-green);
 }
 
+ul.code-langs {
+    padding-left: 1rem;
+}
+
 ul.code-langs>li {
     display: inline;
     border: var(--icon-border);
@@ -147,8 +158,17 @@ a:hover {
     color: var(--link-hover);
 }
 
-section.media-src>ul li:not(:last-child) {
-    color: red;
+section.media-src>ul li:not(:last-child)>a:hover {
+    color: var(--link-hover);
+    border-color: var(--link-hover);
+    background-color: var(--base-gray);
+}
+
+section.media-src>ul li:not(:last-child)>a {
+    color: var(--icon-white);
+    padding: 2.5rem 2rem 2rem 2rem;
+    border-radius: 1rem;
+    border: var(--icon-border);
 }
 
 /*  Flip Card Effect Styling  */
@@ -169,6 +189,7 @@ div.media-back {
     backface-visibility: hidden;
     overflow: hidden;
     border: var(--default-border);
+    border-radius: 2rem;
 }
 
 div.media-back {
@@ -190,7 +211,7 @@ article.media:hover div.media-data {
     transform: rotateY(180deg);
 }
 
-article.media:hover h1 {
+article.media:hover section.media-image>h1 {
     height: 0px;
     padding: 0px;
     margin: 0px;
