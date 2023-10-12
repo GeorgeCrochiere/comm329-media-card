@@ -162,6 +162,7 @@ span.date {
 
 button:hover {
     color: var(--link-hover);
+    cursor: pointer;
 }
 
 section.media-src>ul li:not(:last-child)>button>i:hover {
